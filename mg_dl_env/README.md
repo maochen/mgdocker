@@ -1,15 +1,15 @@
 # MG DeepLearning GPU Image
-CUDA 10.0
-CUDNN 7
-Python 3.7
-Numpy
-Tensorflow GPU 1.15
-Keras 
-Pytorch
+CUDA 10.0 \
+CUDNN 7 \
+Python 3.7 \
+Numpy \
+Tensorflow GPU 1.15 \
+Keras \
+Pytorch \
 Jupyter Book
 
 # Run command
-`nvidia-docker run -v /YOUR_SRC_DATA_FOLDER/:/DEST_FOLDER -e JUPYTER_DIR='/DEST_FOLDER' -dt --name 'mg-tf' -p 2000:8888 castorgmc/mg-tf`
+`nvidia-docker run -v /YOUR_SRC_DATA_FOLDER/:/DEST_FOLDER -e JUPYTER_DIR='/DEST_FOLDER' -dt --name 'mg-dl' -p 2000:8888 castorgmc/mg-dl-env`
 
 # Jupyter Token
 "test"
