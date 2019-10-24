@@ -20,8 +20,9 @@ RUN python -m pip install --no-cache-dir -U pip
 RUN python -m pip install --no-cache-dir -U setuptools
 # also useful
 RUN python -m pip install --no-cache-dir ipython requests numpy pandas quandl jupyter
-RUN python -m pip install --no-cache-dir tensorflow-gpu==1.14.0
+RUN python -m pip install --no-cache-dir --pre "tensorflow==1.15.*"
 RUN python -m pip install --no-cache-dir git+https://www.github.com/keras-team/keras-contrib.git
+RUN python -m pip install --no-cache-dir torch torchvision
 
 ENV JUPYTER_DIR="/home"
 ENTRYPOINT ["sh","-c","jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='test' --NotebookApp.password='' --notebook-dir=${JUPYTER_DIR}"]
