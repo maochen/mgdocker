@@ -7,6 +7,8 @@ RUN apt-get update \
         software-properties-common \
         python3-pip \
         git \
+	unzip \
+	screen \
  && add-apt-repository -y ppa:deadsnakes/ppa \
  && apt-get update \
  && apt-get install -y python3.7 python3.7-dev \
