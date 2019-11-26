@@ -1,30 +1,32 @@
-FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
+FROM nvidia/cuda:10.1-runtime-ubuntu18.04
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
         software-properties-common \
-        python3-pip \
         git \
+        zip \
 	unzip \
-	screen \
- && add-apt-repository -y ppa:deadsnakes/ppa \
- && apt-get update \
- && apt-get install -y python3.7 python3.7-dev \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+	screen
+
+RUN apt-get install -y python3.7 python3-pip \
+ && apt-get clean
+
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
 
 RUN ln -s /usr/bin/python3.7 /usr/bin/python
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
 # pip has to be installed before setuptools, setuptools has to be installed before tensorflow
 RUN python -m pip install --no-cache-dir -U pip
 RUN python -m pip install --no-cache-dir -U setuptools
 # also useful
-RUN python -m pip install --no-cache-dir ipython requests numpy pandas quandl jupyter
+RUN python -m pip install --no-cache-dir ipython tqdm matplotlib numpy jupyter
 RUN python -m pip install --no-cache-dir --pre "tensorflow==1.15.*"
-RUN python -m pip install --no-cache-dir git+https://www.github.com/keras-team/keras-contrib.git
-RUN python -m pip install --no-cache-dir torch torchvision
+RUN python -m pip install --no-cache-dir torch torchvision torchtext
+
 
 ENV JUPYTER_DIR="/home"
 ENTRYPOINT ["sh","-c","jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='test' --NotebookApp.password='' --notebook-dir=${JUPYTER_DIR}"]
