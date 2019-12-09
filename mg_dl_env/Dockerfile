@@ -2,6 +2,8 @@ FROM nvidia/cuda:10.1-runtime-ubuntu18.04
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+        python3-dev \
+        libpython3.7-dev \
         build-essential \
         curl \
         software-properties-common \
