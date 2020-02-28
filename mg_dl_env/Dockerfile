@@ -10,7 +10,8 @@ RUN apt-get update \
         git \
         zip \
 	unzip \
-	screen
+	screen \
+        vim
 
 RUN apt-get install -y python3.7 python3-pip \
  && apt-get clean
@@ -25,9 +26,9 @@ RUN ln -s /usr/bin/pip3 /usr/bin/pip
 RUN python -m pip install --no-cache-dir -U pip
 RUN python -m pip install --no-cache-dir -U setuptools
 # also useful
-RUN python -m pip install --no-cache-dir ipython tqdm matplotlib numpy jupyter
+RUN python -m pip install --no-cache-dir ipython tqdm matplotlib numpy jupyter scikit-plot==0.3.7
 RUN python -m pip install --no-cache-dir --pre "tensorflow==1.15.*"
-RUN python -m pip install --no-cache-dir torch torchvision torchtext
+RUN python -m pip install --no-cache-dir torch torchvision torchtext tensorboardX transformers
 
 
 ENV JUPYTER_DIR="/home"
