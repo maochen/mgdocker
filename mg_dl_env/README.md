@@ -19,9 +19,9 @@
 By default, token is `test`
 
 # Useful Commands
-`docker system prune -f`
-`docker exec -it fuseki /bin/bash`
-`docker build -t test .` 
+`docker system prune -f` \
+`docker exec -it fuseki /bin/bash` \
+`docker build -t test .` \
 `az acr repository list --name mgdockerhub --output table`
 
 
