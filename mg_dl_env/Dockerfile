@@ -1,4 +1,5 @@
-FROM nvidia/cuda:10.2-runtime-ubuntu18.04
+# USING 10.1 is for Tensorflow exclusively as PyTorch has its own cuda cooked inside.
+FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
