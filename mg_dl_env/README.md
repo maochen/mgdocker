@@ -1,8 +1,7 @@
 # MG DeepLearning GPU Image
-- CUDA 10.2 with CUDNN included
-- Python 3.8.3
+- CUDA with CUDNN included
+- Python 3.8.10
 - Numpy
-- Tensorflow 2.0
 - Pytorch
 - Jupyter Book
 
@@ -13,7 +12,7 @@
 | Jupyter | 8888 |
 | tensorboard | 6006 |
 
-`docker run --gpus all --shm-size 64G -v /<YOUR_SRC_DATA_FOLDER>/:/<DEST_FOLDER> -e JUPYTER_DIR='/DEST_FOLDER' -dt --name 'mg-dl' -p 2000:8888 -p 6006:6006 castorgmc/mg-dl-env`
+`docker run --gpus all --platform linux/amd64 --shm-size 64G -v /<HOST_DIR>/:/home -dt --name 'mg-dl' -p 2000:8888 -p 6006:6006 castorgmc/mg-dl-env`
 
 ## Jupyter Token
 By default, token is `test`
@@ -21,7 +20,5 @@ By default, token is `test`
 # Useful Commands
 `docker system prune -f` \
 `docker exec -it fuseki /bin/bash` \
-`docker build -t test .` \
+`docker buildx build --platform linux/amd64 -t test .` \
 `az acr repository list --name mgdockerhub --output table`
-
-
