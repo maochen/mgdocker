@@ -19,6 +19,7 @@ By default, token is `test`
 
 # Useful Commands
 `docker system prune -f` \
-`docker exec -it fuseki /bin/bash` \
+`docker exec -it mg-dl-env /bin/bash` \
 `docker buildx build --platform linux/amd64 -t test .` \
+`docker tag 518a41981a6a castorgmc/mg-dl-env` \
 `az acr repository list --name mgdockerhub --output table`
